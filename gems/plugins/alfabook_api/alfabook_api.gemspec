@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "API enrichments"
   s.description = "Set of api services used by external alfabook systems."
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency 'rails'
