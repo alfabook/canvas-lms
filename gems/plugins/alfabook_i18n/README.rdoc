@@ -1,0 +1,53 @@
+= AlfabookI18n
+
+== Legenda formati dates and times:
+
+%a weekday: Mer
+%A weekday: Mercoledì
+
+%d day in month: 15
+
+%m month number: 05
+%b month string: Mag
+%B month string: Maggio
+
+%Y year: 2016
+
+%k hour 24: 13
+%M minutes: 56
+
+%S seconds: 50
+
+
+== Integrazione revisioni
+
+Il file condiviso delle revisioni è questo: https://docs.google.com/spreadsheets/d/1nbVU7V4WvY9ZAwTQD0r3Zt1Hs1W6YLTjcYoxEhHmN-E/edit
+
+- scaricare file da google in csv
+- trasformare il csv in yml mediante il comando
+bundle exec rake "alfabook_i18n:from_csv[/tmp/traduzioni_v2.9_rev.csv, 3]"
+
+- cambiare etichetta root del source file (config/locales/it.yml) in en e il generato in it:
+- quindi effettuare il merge automatico col comando:
+
+bundle exec rake "i18n:autoimport[/tmp/traduzioni_v2.9_rev.csv.yml, config/locales/it.yml]"
+
+
+- sistemare le etichette date.formats (array days and months) secondo precedente versione
+- sistemare/verificare le etichette number: * in modo che i numeri non siano tra virgolette, i separatori siano vuoti o separatori veri (, o .) e i boolean nn siano tradotti
+- sistemare le etichette support.array... in modo da tenere gli spazi tra virgolette quando necessario
+- rigenerare csv da ricaricare su google
+
+cambiare etichetta root in en e eseguire comando:
+bundle exec rake alfabook_i18n:to_csv[config/locales/it.yml]
+
+spostarlo sul plugin
+mv config/locales/it.yml.csv gems/plugins/alfabook_i18n/config/locales
+
+
+- caricamento su google drive
+
+
+----------------
+Per verificare in modo interattivo le incongruenze tra le traduzioni italiane e inglesi, eseguire il seguente task:
+bundle exec rake "i18n:import[config/locales/generated/en.yml, config/locales/it.yml]"
