@@ -11,8 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Add cors rules to network}
   spec.description   = %q{Add cors rules to network.}
-  spec.homepage      = "http://www.alfabook.it."
-  spec.license       = "MIT"
+  spec.homepage      = "http://www.alfabook.it"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
